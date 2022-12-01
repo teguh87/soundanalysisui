@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+import { Helmet } from 'react-helmet';
+import { Switch, Route } from 'react-router-dom';
+import HeaderComponent from './component/HeaderComponent';
+import { HomePage } from './container/Dashboard';
+
+import { Layout } from 'antd';
+import { Alert } from './container/Alert';
+
 import './App.css';
+
+const { Content } = Layout;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+
+      <Layout>
+        <Helmet
+          titleTemplate="%s - Ground AI Sound Analysis"
+          defaultTitle="Ground AI Sound Analysis"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+           <meta name="description" content="Ground AI Sound Analysis application" />
+        </Helmet>
+        <HeaderComponent/>
+        <Content style={{ padding: '0 50px' }}>
+          <Switch>
+              <Route exact path="/" component={HomePage}/>
+              <Route path='/alert' component={Alert}/> 
+          </Switch>
+        </Content>
+      </Layout>
   );
 }
 

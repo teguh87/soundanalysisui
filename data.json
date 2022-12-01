@@ -1,0 +1,62 @@
+[
+    {
+        "sensor": "1234567890",
+        "cause": 1,
+        "detected": 1628676001,
+        "from": 1,
+        "new": true,
+        "severity": 1,
+        "audio": 1,
+        "comments": "Please check the machine"
+    },
+    {
+        "sensor": "0123456789",
+        "cause": 1,
+        "detected": 1629102961,
+        "from": 1,
+        "new": true,
+        "severity": 2,
+        "audio": 2,
+        "comments": "Please check the machine"
+    },
+    {
+        "sensor": "1234567890",
+        "cause": 1,
+        "detected": 1629058322,
+        "from": 1,
+        "new": false,
+        "severity": 3,
+        "audio": 3,
+        "comments": "Please check the machine"
+    },
+    {
+        "sensor": "1122334455",
+        "cause": 1,
+        "detected": 1629057722,
+        "from": 2,
+        "new": false,
+        "severity": 1,
+        "audio": 4,
+        "comments": "Please check the machine"
+    },
+    {
+        "sensor": "2345678900",
+        "cause": 2,
+        "detected": 1629025202,
+        "from": 2,
+        "new": false,
+        "severity": 2,
+        "audio": 5,
+        "comments": "Please check the machine"
+    },
+    {
+        "sensor": "2345678900",
+        "cause": 2,
+        "detected": 1629057361,
+        "from": 2,
+        "new": false,
+        "severity": 3,
+        "audio": 6,
+        "comments": "Please check the machine"
+    },
+]

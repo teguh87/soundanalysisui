@@ -3,12 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.8.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "antd": "^5.0.2",
+    "next-plugin-antd-less": "^1.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
     "react-scripts": "5.0.1",
+    "react-styled-flexboxgrid": "^3.2.1",
+    "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -34,5 +40,21 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@reduxjs/toolkit": "^1.9.1",
+    "autoprefixer": "^10.4.13",
+    "axios": "^1.2.0",
+    "colormap": "^2.3.2",
+    "gulp": "^4.0.2",
+    "gulp-csso": "^4.0.1",
+    "gulp-debug": "^4.0.0",
+    "gulp-less": "^5.0.0",
+    "gulp-postcss": "^9.0.1",
+    "less-plugin-npm-import": "^2.1.0",
+    "react-css-theme-switcher": "^0.3.0",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-router-dom": "^5.3.3",
+    "wavesurfer.js": "^6.4.0"
   }
 }
