@@ -435,7 +435,7 @@ export function Alert() {
        selected.severity = form.getFieldValue('action');
        selected.from = form.getFieldValue('mechine');
        
-       axios.put('http://10.99.0.221:8080/posts' + selected.id, selected).then((response) => {
+       axios.put('http://127.0.0.1:8080/posts' + selected.id, selected).then((response) => {
             const value = update(posts, response.data);
             console.log(value)
             setPost(value);
