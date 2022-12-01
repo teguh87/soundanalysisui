@@ -5,7 +5,7 @@ FROM node:18.12-alpine3.15 as builder
 COPY package.json package-lock.json ./
 
 # Install the dependencies and make the folder
-RUN npm install && mkdir /app && mv ./node_modules ./app
+RUN npm install -f  && mkdir /app && mv ./node_modules ./app
 
 WORKDIR /app
 
