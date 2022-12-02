@@ -356,28 +356,28 @@ export function Alert() {
     ];
 
     const sounds = [
-        Sound1, Sound2, Sound3, Sound4, Sound5, Sound6 
+        Sound1, Sound2, Sound3, Sound4, Sound5, Sound6
     ]
 
     const findById = (data, value) => {
         return data.find(x => x.value === value).label;
-    };  
+    };
 
     const ItemSeverity = (severity) => {
-        if(severity === 1) {
+        if (severity === 1) {
             return <SeverityMild>Mild</SeverityMild>
         }
-        if(severity === 2) {
+        if (severity === 2) {
             return <SeverityModerate>Moderate</SeverityModerate>
         }
-        if(severity === 3) {
+        if (severity === 3) {
             return <SeveritySevere>Severe</SeveritySevere>
         }
     };
 
     const onSelectedItem = (item) => {
         const clicked = posts.find(_item => _item.id === item.id);
-        
+
         form.setFieldsValue({
             mechine: clicked.from,
             cause: clicked.cause,
@@ -389,26 +389,32 @@ export function Alert() {
     }
 
     const getData = () => {
-        getPostList().then( data => setPost(data))
+        // getPostList().then( data => setPost(data))
+        axios
+            .get("http://18.140.49.119:8080/posts")
+            .then((response) => {
+                setPost(response.data)
+            });
+
     }
     function padTo2Digits(num) {
         return num.toString().padStart(2, '0');
     }
     function formatDate(date) {
         return (
-          [
-            date.getFullYear(),
-            padTo2Digits(date.getMonth() + 1),
-            padTo2Digits(date.getDate()),
-          ].join('-') +
-          ' ' +
-          [
-            padTo2Digits(date.getHours()),
-            padTo2Digits(date.getMinutes()),
-            padTo2Digits(date.getSeconds()),
-          ].join(':')
+            [
+                date.getFullYear(),
+                padTo2Digits(date.getMonth() + 1),
+                padTo2Digits(date.getDate()),
+            ].join('-') +
+            ' ' +
+            [
+                padTo2Digits(date.getHours()),
+                padTo2Digits(date.getMinutes()),
+                padTo2Digits(date.getSeconds()),
+            ].join(':')
         );
-      }
+    }
 
     const toDate = (date) => {
         return 'Detected at ' + formatDate(new Date(date * 1000));
@@ -422,7 +428,7 @@ export function Alert() {
 
     const update = (data, selected) => {
         return data.map(v => {
-            if(v.id === selected.id) {
+            if (v.id === selected.id) {
                 v = selected
             }
             return v;
@@ -430,18 +436,18 @@ export function Alert() {
     }
 
     const saved = (e) => {
-       selected.comments = form.getFieldValue('desc');
-       selected.cause = form.getFieldValue('cause');
-       selected.severity = form.getFieldValue('action');
-       selected.from = form.getFieldValue('mechine');
-       
-       axios.put('http://127.0.0.1:8080/posts' + selected.id, selected).then((response) => {
+        selected.comments = form.getFieldValue('desc');
+        selected.cause = form.getFieldValue('cause');
+        selected.severity = form.getFieldValue('action');
+        selected.from = form.getFieldValue('mechine');
+
+        axios.put('http://18.140.49.119:8080/posts' + selected.id, selected).then((response) => {
             const value = update(posts, response.data);
             console.log(value)
             setPost(value);
-       });
+        });
     }
- 
+
     useEffect(() => {
         getData();
     }, []);
@@ -449,7 +455,7 @@ export function Alert() {
     useEffect(() => {
         setPost(filtered)
     }, [filtered])
-  
+
     return (
         <Content className="site-layout-background" style={{
             margin: '24px 16px',
@@ -495,7 +501,7 @@ export function Alert() {
                                         endMessage={<Divider plain>It is all, nothing more 🤐</Divider>}
                                         scrollableTarget="scrollableDiv"
                                     >
-                                        <List dataSource={posts} renderItem={(item)  => (
+                                        <List dataSource={posts} renderItem={(item) => (
                                             <List.Item key={item.id} style={{ padding: '2px', width: '100%' }} onClick={() => onSelectedItem(item)}>
                                                 <ListBody>
                                                     <IsNew>
@@ -512,18 +518,18 @@ export function Alert() {
                                                     }
                                                 </ListBody>
                                             </List.Item>
-                                        )}/>
+                                        )} />
 
                                     </InfiniteScroll>
                                 </ListContainer>
                             </Col>
                             <Col span={18}>
-                                <Row style={{height: '410px'}}>
+                                <Row style={{ height: '410px' }}>
                                     <Col span={12}>
-                                       {selected && <Waveform audio={sounds[selected.audio]} label="Anomaly Machine Output"  style={{width: '256px'}}/>}
+                                        {selected && <Waveform audio={sounds[selected.audio]} label="Anomaly Machine Output" style={{ width: '256px' }} />}
                                     </Col>
                                     <Col span={12}>
-                                       {selected && <Waveform audio={sounds[selected.audio]} label="Normal Machine Output"  style={{width: '256px'}}/>}
+                                        {selected && <Waveform audio={sounds[selected.audio]} label="Normal Machine Output" style={{ width: '256px' }} />}
                                     </Col>
                                 </Row>
                                 <Row>
