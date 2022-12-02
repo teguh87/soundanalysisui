@@ -389,7 +389,7 @@ export function Alert() {
     const getData = () => {
         // getPostList().then( data => setPost(data))
         axios
-            .get("http://18.140.49.119:8080/posts")
+            .get("http://209.97.166.231:8080/posts")
             .then((response) => {
                 setPost(response.data)
             });
@@ -439,7 +439,7 @@ export function Alert() {
         selected.severity = form.getFieldValue('action');
         selected.from = form.getFieldValue('mechine');
 
-        axios.put('http://18.140.49.119:8080/posts' + selected.id, selected).then((response) => {
+        axios.put('http://209.97.166.231:8080/posts' + selected.id, selected).then((response) => {
             const value = update(posts, response.data);
             console.log(value)
             setPost(value);
