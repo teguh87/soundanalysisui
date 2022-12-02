@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Waveform from "../component/Waveform";
 
-import { getPostList } from '../service/post';
-
 import axios from "axios";
 
 import cevron from '../cevron.svg';
